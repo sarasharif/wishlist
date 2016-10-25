@@ -1,0 +1,12 @@
+var _user$project$Items_Commands$memberDecoder = A4(
+	_elm_lang$core$Json_Decode$map3,
+	_user$project$Items_Models$Item,
+	A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$string),
+	A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
+	A2(_elm_lang$core$Json_Decode$field, 'quantity', _elm_lang$core$Json_Decode$int));
+var _user$project$Items_Commands$collectionDecoder = _elm_lang$core$Json_Decode$list(_user$project$Items_Commands$memberDecoder);
+var _user$project$Items_Commands$fetchAllUrl = 'http://localhost:4000/items';
+var _user$project$Items_Commands$fetchAll = A2(
+	_elm_lang$http$Http$send,
+	_user$project$Items_Messages$OnFetchAll,
+	A2(_elm_lang$http$Http$get, _user$project$Items_Commands$fetchAllUrl, _user$project$Items_Commands$collectionDecoder));

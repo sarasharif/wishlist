@@ -1,0 +1,3 @@
+var _user$project$Items_Messages$OnFetchAll = function (a) {
+	return {ctor: 'OnFetchAll', _0: a};
+};

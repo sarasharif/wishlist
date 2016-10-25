@@ -1,10 +1,16 @@
+var _user$project$View$page = function (model) {
+	return A2(
+		_elm_lang$html$Html$map,
+		_user$project$Messages$ItemsMsg,
+		_user$project$Items_List$view(model.items));
+};
 var _user$project$View$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html$text(model),
+			_0: _user$project$View$page(model),
 			_1: {ctor: '[]'}
 		});
 };

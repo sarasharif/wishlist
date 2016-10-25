@@ -1,1 +1,3 @@
-var _user$project$Messages$NoOp = {ctor: 'NoOp'};
+var _user$project$Messages$ItemsMsg = function (a) {
+	return {ctor: 'ItemsMsg', _0: a};
+};

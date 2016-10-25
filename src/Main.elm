@@ -1,15 +1,16 @@
 module Main exposing (..)
 
 import Html exposing (Html, div, text, program)
-import Messages exposing (Msg)
-import Models exposing (Model)
+import Messages exposing (Msg(..))
+import Models exposing (Model, initialModel)
 import Update exposing (update)
 import View exposing (view)
+import Items.Commands exposing (fetchAll)
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( "Hello", Cmd.none )
+    ( initialModel, Cmd.map ItemsMsg fetchAll )
 
 
 subscriptions : Model -> Sub Msg
