@@ -1,3 +1,7 @@
+var _user$project$Items_Messages$ShowItem = function (a) {
+	return {ctor: 'ShowItem', _0: a};
+};
+var _user$project$Items_Messages$ShowItems = {ctor: 'ShowItems'};
 var _user$project$Items_Messages$OnFetchAll = function (a) {
 	return {ctor: 'OnFetchAll', _0: a};
 };

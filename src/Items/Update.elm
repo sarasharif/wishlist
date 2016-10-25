@@ -2,6 +2,7 @@ module Items.Update exposing (..)
 
 import Items.Messages exposing (Msg(..))
 import Items.Models exposing (Item)
+import Navigation
 
 
 update : Msg -> List Item -> ( List Item, Cmd Msg )
@@ -12,3 +13,9 @@ update message items =
 
         OnFetchAll (Err error) ->
             ( items, Cmd.none )
+
+        ShowItems ->
+            ( items, Navigation.newUrl "#items" )
+
+        ShowItem id ->
+            ( items, Navigation.newUrl ("#items/" ++ id) )

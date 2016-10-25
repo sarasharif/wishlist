@@ -1,6 +1,10 @@
-var _user$project$Models$initialModel = {
-	items: {ctor: '[]'}
+var _user$project$Models$initialModel = function (route) {
+	return {
+		items: {ctor: '[]'},
+		route: route
+	};
 };
-var _user$project$Models$Model = function (a) {
-	return {items: a};
-};
+var _user$project$Models$Model = F2(
+	function (a, b) {
+		return {items: a, route: b};
+	});

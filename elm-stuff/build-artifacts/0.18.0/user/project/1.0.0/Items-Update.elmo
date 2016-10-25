@@ -1,9 +1,25 @@
 var _user$project$Items_Update$update = F2(
 	function (message, items) {
 		var _p0 = message;
-		if (_p0._0.ctor === 'Ok') {
-			return {ctor: '_Tuple2', _0: _p0._0._0, _1: _elm_lang$core$Platform_Cmd$none};
-		} else {
-			return {ctor: '_Tuple2', _0: items, _1: _elm_lang$core$Platform_Cmd$none};
+		switch (_p0.ctor) {
+			case 'OnFetchAll':
+				if (_p0._0.ctor === 'Ok') {
+					return {ctor: '_Tuple2', _0: _p0._0._0, _1: _elm_lang$core$Platform_Cmd$none};
+				} else {
+					return {ctor: '_Tuple2', _0: items, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+			case 'ShowItems':
+				return {
+					ctor: '_Tuple2',
+					_0: items,
+					_1: _elm_lang$navigation$Navigation$newUrl('#items')
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: items,
+					_1: _elm_lang$navigation$Navigation$newUrl(
+						A2(_elm_lang$core$Basics_ops['++'], '#items/', _p0._0))
+				};
 		}
 	});

@@ -2,6 +2,7 @@ module Items.List exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 import Items.Messages exposing (..)
 import Items.Models exposing (Item)
 
@@ -44,5 +45,14 @@ itemRow item =
         , td [] [ text item.name ]
         , td [] [ text (toString item.quantity) ]
         , td []
-            []
+            [ editBtn item ]
         ]
+
+
+editBtn : Item -> Html Msg
+editBtn item =
+    button
+        [ class "btn regular"
+        , onClick (ShowItem item.id)
+        ]
+        [ i [ class "fa fa-pencil mr1" ] [] ]
