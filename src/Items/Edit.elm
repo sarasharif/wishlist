@@ -36,8 +36,8 @@ formQuantity item =
         ]
         [ div [ class "col col-5" ] [ text "Quantity" ]
         , div [ class "col col-7" ]
-            [ span [ class "h2 bold" ] [ text (toString item.quantity) ]
-            , btnQuantityDecrease item
+            [ btnQuantityDecrease item
+            , span [ class "h2 bold" ] [ text (toString item.quantity) ]
             , btnQuantityIncrease item
             ]
         ]
@@ -45,13 +45,13 @@ formQuantity item =
 
 btnQuantityDecrease : Item -> Html Msg
 btnQuantityDecrease item =
-    a [ class "btn ml1 h1" ]
+    a [ class "btn ml1 h1", onClick (ChangeQuantity item.id -1) ]
         [ i [ class "fa fa-minus-circle" ] [] ]
 
 
 btnQuantityIncrease : Item -> Html Msg
 btnQuantityIncrease item =
-    a [ class "btn ml1 h1" ]
+    a [ class "btn ml1 h1", onClick (ChangeQuantity item.id 1) ]
         [ i [ class "fa fa-plus-circle" ] [] ]
 
 

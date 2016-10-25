@@ -8,3 +8,5 @@ type Msg
     = OnFetchAll (Result Http.Error (List Item))
     | ShowItems
     | ShowItem ItemId
+    | ChangeQuantity ItemId Int
+    | OnSave (Result Http.Error Item)

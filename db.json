@@ -1,9 +1,29 @@
 {
   "items": [
-    { "id": "1", "name": "jeans", "quantity": 2 },
-    { "id": "2", "name": "black heels", "quantity": 1 },
-    { "id": "3", "name": "hair ties", "quantity": 8 },
-    { "id": "4", "name": "bike", "quantity": 4 },
-    { "id": "5", "name": "camera", "quantity": 1 }
+    {
+      "id": "1",
+      "name": "jeans",
+      "quantity": 6
+    },
+    {
+      "id": "2",
+      "name": "black heels",
+      "quantity": 0
+    },
+    {
+      "id": "3",
+      "name": "hair ties",
+      "quantity": 8
+    },
+    {
+      "id": "4",
+      "name": "bike",
+      "quantity": 4
+    },
+    {
+      "id": "5",
+      "name": "camera",
+      "quantity": 4
+    }
   ]
 }

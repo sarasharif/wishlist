@@ -31,7 +31,12 @@ var _user$project$Items_Edit$btnQuantityIncrease = function (item) {
 		{
 			ctor: '::',
 			_0: _elm_lang$html$Html_Attributes$class('btn ml1 h1'),
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Events$onClick(
+					A2(_user$project$Items_Messages$ChangeQuantity, item.id, 1)),
+				_1: {ctor: '[]'}
+			}
 		},
 		{
 			ctor: '::',
@@ -52,7 +57,12 @@ var _user$project$Items_Edit$btnQuantityDecrease = function (item) {
 		{
 			ctor: '::',
 			_0: _elm_lang$html$Html_Attributes$class('btn ml1 h1'),
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Events$onClick(
+					A2(_user$project$Items_Messages$ChangeQuantity, item.id, -1)),
+				_1: {ctor: '[]'}
+			}
 		},
 		{
 			ctor: '::',
@@ -100,22 +110,22 @@ var _user$project$Items_Edit$formQuantity = function (item) {
 					},
 					{
 						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$span,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('h2 bold'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(
-									_elm_lang$core$Basics$toString(item.quantity)),
-								_1: {ctor: '[]'}
-							}),
+						_0: _user$project$Items_Edit$btnQuantityDecrease(item),
 						_1: {
 							ctor: '::',
-							_0: _user$project$Items_Edit$btnQuantityDecrease(item),
+							_0: A2(
+								_elm_lang$html$Html$span,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('h2 bold'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(
+										_elm_lang$core$Basics$toString(item.quantity)),
+									_1: {ctor: '[]'}
+								}),
 							_1: {
 								ctor: '::',
 								_0: _user$project$Items_Edit$btnQuantityIncrease(item),

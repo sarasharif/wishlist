@@ -1,3 +1,10 @@
+var _user$project$Items_Messages$OnSave = function (a) {
+	return {ctor: 'OnSave', _0: a};
+};
+var _user$project$Items_Messages$ChangeQuantity = F2(
+	function (a, b) {
+		return {ctor: 'ChangeQuantity', _0: a, _1: b};
+	});
 var _user$project$Items_Messages$ShowItem = function (a) {
 	return {ctor: 'ShowItem', _0: a};
 };

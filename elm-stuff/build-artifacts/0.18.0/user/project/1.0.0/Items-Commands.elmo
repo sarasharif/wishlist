@@ -1,9 +1,59 @@
+var _user$project$Items_Commands$memberEncoded = function (item) {
+	var list = {
+		ctor: '::',
+		_0: {
+			ctor: '_Tuple2',
+			_0: 'id',
+			_1: _elm_lang$core$Json_Encode$string(item.id)
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'name',
+				_1: _elm_lang$core$Json_Encode$string(item.name)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'quantity',
+					_1: _elm_lang$core$Json_Encode$int(item.quantity)
+				},
+				_1: {ctor: '[]'}
+			}
+		}
+	};
+	return _elm_lang$core$Json_Encode$object(list);
+};
+var _user$project$Items_Commands$saveUrl = function (itemId) {
+	return A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:4000/items/', itemId);
+};
 var _user$project$Items_Commands$memberDecoder = A4(
 	_elm_lang$core$Json_Decode$map3,
 	_user$project$Items_Models$Item,
 	A2(_elm_lang$core$Json_Decode$field, 'id', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode$field, 'name', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode$field, 'quantity', _elm_lang$core$Json_Decode$int));
+var _user$project$Items_Commands$saveRequest = function (item) {
+	return _elm_lang$http$Http$request(
+		{
+			body: _elm_lang$http$Http$jsonBody(
+				_user$project$Items_Commands$memberEncoded(item)),
+			expect: _elm_lang$http$Http$expectJson(_user$project$Items_Commands$memberDecoder),
+			headers: {ctor: '[]'},
+			method: 'PATCH',
+			timeout: _elm_lang$core$Maybe$Nothing,
+			url: _user$project$Items_Commands$saveUrl(item.id),
+			withCredentials: false
+		});
+};
+var _user$project$Items_Commands$save = function (item) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Items_Messages$OnSave,
+		_user$project$Items_Commands$saveRequest(item));
+};
 var _user$project$Items_Commands$collectionDecoder = _elm_lang$core$Json_Decode$list(_user$project$Items_Commands$memberDecoder);
 var _user$project$Items_Commands$fetchAllUrl = 'http://localhost:4000/items';
 var _user$project$Items_Commands$fetchAll = A2(

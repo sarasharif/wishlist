@@ -1,3 +1,20 @@
+var _user$project$Items_Update$updateItem = F2(
+	function (updatedItem, items) {
+		var select = function (existingItem) {
+			return _elm_lang$core$Native_Utils.eq(existingItem.id, updatedItem.id) ? updatedItem : existingItem;
+		};
+		return A2(_elm_lang$core$List$map, select, items);
+	});
+var _user$project$Items_Update$changeQuantityCommands = F3(
+	function (itemId, howMuch, items) {
+		var cmdForItem = function (existingItem) {
+			return _elm_lang$core$Native_Utils.eq(existingItem.id, itemId) ? _user$project$Items_Commands$save(
+				_elm_lang$core$Native_Utils.update(
+					existingItem,
+					{quantity: existingItem.quantity + howMuch})) : _elm_lang$core$Platform_Cmd$none;
+		};
+		return A2(_elm_lang$core$List$map, cmdForItem, items);
+	});
 var _user$project$Items_Update$update = F2(
 	function (message, items) {
 		var _p0 = message;
@@ -14,12 +31,29 @@ var _user$project$Items_Update$update = F2(
 					_0: items,
 					_1: _elm_lang$navigation$Navigation$newUrl('#items')
 				};
-			default:
+			case 'ShowItem':
 				return {
 					ctor: '_Tuple2',
 					_0: items,
 					_1: _elm_lang$navigation$Navigation$newUrl(
 						A2(_elm_lang$core$Basics_ops['++'], '#items/', _p0._0))
 				};
+			case 'ChangeQuantity':
+				return {
+					ctor: '_Tuple2',
+					_0: items,
+					_1: _elm_lang$core$Platform_Cmd$batch(
+						A3(_user$project$Items_Update$changeQuantityCommands, _p0._0, _p0._1, items))
+				};
+			default:
+				if (_p0._0.ctor === 'Ok') {
+					return {
+						ctor: '_Tuple2',
+						_0: A2(_user$project$Items_Update$updateItem, _p0._0._0, items),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: items, _1: _elm_lang$core$Platform_Cmd$none};
+				}
 		}
 	});
