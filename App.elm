@@ -1,18 +1,20 @@
-module App exposing (..)
+module Main exposing (..)
 
 import Html exposing (Html, div, text, program)
+import Mouse
+import Keyboard
 
 
 -- MODEL
 
 
 type alias Model =
-    String
+    Int
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( "Hello", Cmd.none )
+    ( 0, Cmd.none )
 
 
 
@@ -20,7 +22,8 @@ init =
 
 
 type Msg
-    = NoOp
+    = MouseMsg Mouse.Position
+    | KeyMsg Keyboard.KeyCode
 
 
 
@@ -30,7 +33,7 @@ type Msg
 view : Model -> Html Msg
 view model =
     div []
-        [ text model ]
+        [ text (toString model) ]
 
 
 
@@ -40,8 +43,11 @@ view model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NoOp ->
-            ( model, Cmd.none )
+        MouseMsg position ->
+            ( model + 1, Cmd.none )
+
+        KeyMsg code ->
+            ( model + 2, Cmd.none )
 
 
 
@@ -50,7 +56,10 @@ update msg model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.none
+    Sub.batch
+        [ Mouse.clicks MouseMsg
+        , Keyboard.downs KeyMsg
+        ]
 
 
 
